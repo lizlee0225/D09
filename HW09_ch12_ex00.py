@@ -10,9 +10,8 @@
 # (1) Write a function called sumall that takes any number of arguments and
 #     returns their sum.
 ###############################################################################
-# Imports
-
-# Body
+def sumall(*args):
+	return sum(args)
 
 
 ##############################################################################

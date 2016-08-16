@@ -8,11 +8,17 @@
 #     b
 ###############################################################################
 # Imports
-
+def last_elem(x):
+    return x[-1]
 
 # Body
 def most_frequent(s):
-    ...
+    chars_dict = {}
+    for letter in s:
+      chars_dict[letter] = chars_dict.get(letter,0) + 1
+    lst = (sorted(sorted(chars_dict.items()), key = last_elem, reverse = True))
+    for letter, freq in lst:
+      print(letter)
 
 
 ###############################################################################

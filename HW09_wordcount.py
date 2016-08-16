@@ -47,10 +47,39 @@ import sys
 
 ###
 
+def count_words(filename):
+    word_count = {}
+    for line in filename:
+        for word in line.split():
+            word_count[word.lower()] = word_count.get(word, 0) + 1
+    return word_count
+
+def last_elem(x):
+    return x[-1]
+
+def print_words(filename):
+    word_dict = {}
+    with open(filename, 'r') as file:
+        word_dict = count_words(file)
+    for word, freq in sorted(word_dict.items()):
+        print(word, freq)
+
+def print_top(filename):
+    count = 0
+    word_dict = {}
+    with open(filename, 'r') as file:
+        word_dict = count_words(file)
+    lst = sorted(sorted(word_dict.items()), key = last_elem, reverse = True)
+    for word, freq in lst[:20]:
+        print(word, freq)
+
+
+
 
 # This basic command line argument parsing code is provided and
 # calls the print_words() and print_top() functions which you must define.
 def main():
+    print_top('alice.txt')
     if len(sys.argv) != 3:
         print('usage: ./wordcount.py {--count | --topcount} file')
         sys.exit(1)
